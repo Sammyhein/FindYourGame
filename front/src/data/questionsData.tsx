@@ -12,7 +12,7 @@ const questionsData = [
     "id":1,
     "question":"Question 2",
     "description":"Cherches-tu un jeu gratuit ?",
-    "reponses":["oui","non","Pas forcément"],
+    "reponses":["oui","non","Pas d'importances"],
     "input":false,
     "needsData":false,
     "callData": "free_to_play"
@@ -30,7 +30,7 @@ const questionsData = [
     "id":3,
     "question":"Question 4",
     "description":"Quel(s) genre(s) de jeu(x) recherches-tu ?",
-    "reponses":[],
+    "reponses":["Pas d'importances"],
     "input":false,
     "needsData":true,
     "callData":"category"

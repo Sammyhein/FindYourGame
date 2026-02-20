@@ -1,9 +1,15 @@
+import { useLocation } from "react-router-dom"
 import type { dataStateResults } from "../interfaces/interface"
 import { useState, useEffect } from "react"
 
 function Results(){
     const [data, setData] = useState<dataStateResults[] | null>(null)
     const [loading, setLoading] = useState(true)
+
+    //Je récupère mes réponses des questions grâce à useLocation
+    const location = useLocation()
+    const reponsesList = location.state
+    //console.log(reponsesList)
 
     useEffect(() => {
          async function getData() {
@@ -21,11 +27,23 @@ function Results(){
     if(loading)return <h1>Loading...</h1>
 
     console.log(data);
+
+    const gamesFilter = data?.filter(game =>{
+        return(
+        reponsesList.parental_guidance >= game.parental_guidance && 
+        (reponsesList.free_to_play === "null" || game.free_to_play === (reponsesList.free_to_play === "true")) &&
+        (reponsesList.platforms === "null" || game.platforms.includes(reponsesList.platforms)) &&
+        (reponsesList.category === "null" || game.category.includes(reponsesList.category)) && 
+        (reponsesList.online === "null" || game.online === (reponsesList.online==="true")) &&
+        (reponsesList.multiplayer === "null" || game.multiplayer === (reponsesList.multiplayer === "true"))
+        )
+    })
+
 return(
     <>
     <h1>Voici le/les jeu(x) que nous vous conseillons selon vos critères !</h1>
     <article className="flex flex-wrap gap-4 place-content-center-safe">
-    {data?.map((game)=>{
+    {gamesFilter?.map((game)=>{
         return(
         <article key={game.id} className="bg-gray-900 rounded-4xl mb-5 relative max-w-xl">
             <section className="mb-2">

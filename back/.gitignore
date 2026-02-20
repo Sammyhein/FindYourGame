@@ -1,3 +1,6 @@
+#dossier les plus lourd
+node_modules
+
 # Environment variables
 .env
 .env.*

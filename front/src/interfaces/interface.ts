@@ -2,14 +2,14 @@ export interface dataState{
     id:number;
     name:string;
     description:string;
-    category:[];
+    category:string[];
     company_name:string;
     free_to_play:boolean;
     image_url:string;
     multiplayer:boolean;
     online:boolean;
     parental_guidance:number;
-    platforms:[];
+    platforms:string[];
     previous_grame:string;
     release_year:2025;
 }

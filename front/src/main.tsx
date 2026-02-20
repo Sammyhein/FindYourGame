@@ -4,12 +4,16 @@ import './index.css'
 import App from './App.tsx'
 import Questions from './pages/Questions.tsx'
 import Results from './pages/Results.tsx'
-import { createBrowserRouter , RouterProvider} from 'react-router-dom'
+import { createBrowserRouter , RouterProvider } from 'react-router-dom'
+import NotFoundPage from './pages/NotFoundPage.tsx'
+import DescriptionGame from './pages/DescriptionGame.tsx'
 
 const router = createBrowserRouter([
   {path:"/", element:<App />},
   {path:"/questions", element:<Questions />},
-  {path:"/results", element:<Results />}
+  {path:"/results", element:<Results />},
+  {path:"*", element:<NotFoundPage />},
+  {path:"/descriptionGame", element:<DescriptionGame />}
 ])
 
 createRoot(document.getElementById('root')!).render(

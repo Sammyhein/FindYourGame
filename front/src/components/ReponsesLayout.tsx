@@ -7,7 +7,15 @@ export default function ReponsesLayout({questionsTyped, currentQuestion, setCurr
         if(questionsTyped[currentQuestion].callData === "parental_guidance"){
             return(
             <>
-            <form action="" className="flex gap-2 justify-center">
+            <form action="" className="flex gap-2 justify-center" onSubmit={(e) => {
+                e.preventDefault()
+                if(inputAge !== 0){
+                    reponsesList.parental_guidance=inputAge
+                    setCurrentQuestion(currentQuestion+1);
+                }else{
+                    alert("Vous devez inscrire votre âge")
+                }
+                }}>
             <input required type="number" placeholder="Votre âge en nombre" onChange={(e)=>{setInputAge(Number(e.target.value))}}/><p>ans</p>
             </form>
              <button onClick={()=>{
@@ -29,7 +37,7 @@ export default function ReponsesLayout({questionsTyped, currentQuestion, setCurr
                     <button key={index} onClick={()=> {
                         if(reponse === "oui")reponsesList.free_to_play="true"
                         else if(reponse ==="non") reponsesList.free_to_play="false"
-                        else if(reponse==="Pas forcément")reponsesList.free_to_play="null"
+                        else if(reponse==="Pas d'importances")reponsesList.free_to_play="null"
                         setCurrentQuestion(currentQuestion +1);
                     }}>{reponse}</button>
                     )
@@ -54,6 +62,9 @@ export default function ReponsesLayout({questionsTyped, currentQuestion, setCurr
                     reponsesList.category=category.name
                     setCurrentQuestion(currentQuestion+1);
                     }}>{category.name}</button>)})}
+                <button onClick={()=>{
+                    setCurrentQuestion(currentQuestion +1);
+                    reponsesList.category="null"}}>{questionsTyped[currentQuestion].reponses}</button>
                 </>)
         } else if (questionsTyped[currentQuestion].callData === "online"){
             return(
@@ -61,7 +72,7 @@ export default function ReponsesLayout({questionsTyped, currentQuestion, setCurr
                 {questionsTyped[currentQuestion].reponses.map((reponse : string, index : number)=>{return(<button key={index} onClick={()=>{
                     if(reponse === "oui")reponsesList.online="true"
                     else if(reponse ==="non") reponsesList.online="false"
-                    else if(reponse==="Pas forcément")reponsesList.online="null"
+                    else if(reponse==="Pas d'importances")reponsesList.online="null"
                     setCurrentQuestion(currentQuestion+1)}}>{reponse}</button>)})}
                 </>)
         } else if(questionsTyped[currentQuestion].callData === "multiplayer"){
@@ -70,7 +81,7 @@ export default function ReponsesLayout({questionsTyped, currentQuestion, setCurr
                 {questionsTyped[currentQuestion].reponses.map((reponse :string, index : number)=>{return(<button key={index} onClick={()=>{
                     if(reponse === "oui")reponsesList.multiplayer="true"
                     else if(reponse ==="non") reponsesList.multiplayer="false"
-                    else if(reponse==="Pas forcément")reponsesList.multiplayer="null"
+                    else if(reponse==="Pas d'importances")reponsesList.multiplayer="null"
                     setCurrentQuestion(currentQuestion+1)}}>{reponse}</button>)})}
                 </>)
         }
