@@ -34,11 +34,11 @@ function DescriptionGame(){
             return(
             <>
                 <h1>{game.name}</h1>
-                <article className="flex bg-gray-900">
+                <article className="flex justify-evenly bg-gray-900 min-h-screen p-10 gap-10 items-start">
                     <section>
-                        <img src={game.image_url} alt={game.name} />
+                        <img src={game.image_url} alt={game.name} className="rounded-2xl max-w-xs sticky top-10"/>
                     </section>
-                    <section>
+                    <section className="max-w-xl flex flex-col gap-4">
                         <section className="flex gap-3 flex-row-reverse mb-3">
                             {game.free_to_play === true && (<p className=" bg-green-400 rounded-3xl p-2 font-bold border-3 border-white text-[12px]">Gratuit</p>)}
                             <p className=" bg-purple-800 rounded-3xl font-bold p-2 border-3 border-white text-[12px]">{game.company_name}</p>
@@ -51,10 +51,10 @@ function DescriptionGame(){
                             <p className="text-blue-300">Platforme(s):</p>
                             {game.platforms.map((platform, index) => <p className=" bg-blue-900 rounded-2xl p-2 font-black border-2 border-blue-300 text-[12px]" key={index}>{platform}</p>)}
                         </section>
-                        <p>{game.description}</p>
+                        <p className="text-left">{game.description}</p>
 
                         
-                        <button onClick={()=>{navigate(-1)}}>Retour</button>
+                        <button className="rounded-full bg-purple-600 font-black uppercase text-purple-200 mb-5" onClick={()=>{navigate(-1)}}>Retour</button>
                         
                     </section>
                 </article>
