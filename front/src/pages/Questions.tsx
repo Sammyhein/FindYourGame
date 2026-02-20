@@ -75,7 +75,7 @@ function Questions(){
             <h1>Êtes-vous prêt(e)s à voir les jeux qui vous correspondent ? </h1>
             {/* le state c'est ce qui va me permettre d'exporter mes réponses à la page résultat en utilisant useLocation */}
             <Link to={"/results"} state={reponsesList}>
-            <button onClick={()=>{}} >Résultats</button>
+            <button>Résultats</button>
             </Link>
             <button onClick={()=>{
                 setCurrentQuestion(0);

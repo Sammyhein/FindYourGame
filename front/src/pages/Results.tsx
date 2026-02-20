@@ -1,6 +1,7 @@
 import { useLocation } from "react-router-dom"
 import type { dataStateResults } from "../interfaces/interface"
 import { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 
 function Results(){
     const [data, setData] = useState<dataStateResults[] | null>(null)
@@ -44,6 +45,7 @@ return(
     <h1>Voici le/les jeu(x) que nous vous conseillons selon vos critères !</h1>
     <article className="flex flex-wrap gap-4 place-content-center-safe">
     {gamesFilter?.map((game)=>{
+        const gameId = game.id
         return(
         <article key={game.id} className="bg-gray-900 rounded-4xl mb-5 relative max-w-xl">
             <section className="mb-2">
@@ -62,7 +64,9 @@ return(
                 <p className="text-blue-300">Platforme(s):</p>
                 {game.platforms.map((platform, index) => <p className=" bg-blue-900 rounded-2xl p-2 font-black border-2 border-blue-300 text-[12px]" key={index}>{platform}</p>)}
             </section>
+            <Link to={"/descriptionGame"} state={gameId}>
             <button className="rounded-full bg-purple-600 font-black uppercase text-purple-200 mb-5">Voir Plus</button>
+            </Link>
         </article>
         )
     })}

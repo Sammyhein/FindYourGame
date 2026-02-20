@@ -14,7 +14,7 @@ export interface dataState{
     release_year:2025;
 }
 
-export type dataStateResults = Pick<dataState,"id" | "name" | "category" | "free_to_play" | "multiplayer" | "online" | "parental_guidance" | "image_url" |"company_name" | "platforms">
+export type dataStateResults = Pick<dataState,"id" | "name" | "category" | "free_to_play" | "multiplayer" | "online" | "parental_guidance" | "image_url" |"company_name" | "platforms" | "description">
 
 export interface questionsState{
     id:number;
