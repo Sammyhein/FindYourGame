@@ -36,7 +36,7 @@ app.get('/platforms', async (_, res) =>{
 app.get('/description/:id', async (req, res) => {
   const id = parseInt(req.params.id);
   console.log(id)
-  const result = await sql `SELECT g.id_game AS id, g.name, g.release_year, g.previous_game, g.description, g.image_url, g.parental_guidance, g.free_to_play, g.company_name, g.online, g.multiplayer, ARRAY_AGG(DISTINCT p.name) AS platforms, ARRAY_AGG(DISTINCT c.name) AS category FROM games g
+  const result = await sql `SELECT g.id_game AS id, g.name, g.release_year, g.previous_game, g.description, g.image_url, g.parental_guidance, g.free_to_play, g.company_name, g.online, g.multiplayer, ARRAY_AGG(DISTINCT p.name) AS platforms, ARRAY_AGG(DISTINCT c.name) AS category, g.video_url FROM games g
 LEFT JOIN games_platforms gp ON g.id_game =gp.id_game
 LEFT JOIN platforms p ON gp.id_platform = p.id_platform
 LEFT JOIN games_category gc ON g.id_game =gc.id_game

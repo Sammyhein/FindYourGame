@@ -7,9 +7,9 @@ function App() {
 
   return (
     <>
-     <h1>FIND YOUR GAME</h1>
+     <h1 className='text-7xl'>FIND YOUR GAME</h1>
      <Link to={"/questions"}>
-     <button>START</button>
+     <button>Appuyez ici pour commencer</button>
      </Link>
     </>
   )

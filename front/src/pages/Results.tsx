@@ -42,7 +42,7 @@ function Results(){
 
 return(
     <>
-    <h1>Voici le/les jeu(x) que nous vous conseillons selon vos critères !</h1>
+    <h1 className="mb-5 text-5xl uppercase">Voici le/les jeu(x) que nous vous conseillons selon vos critères !</h1>
     <article className="flex flex-wrap gap-4 place-content-center-safe">
     {gamesFilter?.map((game)=>{
         const gameId = game.id
@@ -50,11 +50,11 @@ return(
         <article key={game.id} className="bg-gray-900 rounded-4xl mb-5 relative max-w-xl">
             <section className="mb-2">
                 <section className="absolute right-5 top-3 flex gap-3">
-                    {game.free_to_play === true && (<p className=" bg-green-400 rounded-3xl p-2 font-bold border-3 border-white text-[12px]">Gratuit</p>)}
+                    {game.free_to_play === true && (<p className=" bg-green-600 rounded-3xl p-2 font-bold border-3 border-white text-[12px]">Gratuit</p>)}
                     <p className=" bg-purple-800 rounded-3xl font-bold p-2 border-3 border-white text-[12px]">{game.company_name}</p>
                 </section>
                 <img src={game.image_url} alt={game.name} className="place-self-center-safe rounded-t-4xl"/>
-                <h2 className="uppercase text-[2rem] font-bold text-purple-600">{game.name}</h2>
+                <h2 className="uppercase text-[2rem] font-bold text-purple-100">{game.name}</h2>
             </section>
             <section className="flex flex-wrap gap-5 justify-center-safe mb-2">
                 <p className="text-red-300">Genre(s):</p>

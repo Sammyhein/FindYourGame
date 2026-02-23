@@ -12,9 +12,10 @@ export interface dataState{
     platforms:string[];
     previous_grame:string;
     release_year:2025;
+    video_url:string;
 }
 
-export type dataStateResults = Pick<dataState,"id" | "name" | "category" | "free_to_play" | "multiplayer" | "online" | "parental_guidance" | "image_url" |"company_name" | "platforms" | "description">
+export type dataStateResults = Pick<dataState,"id" | "name" | "category" | "free_to_play" | "multiplayer" | "online" | "parental_guidance" | "image_url" |"company_name" | "platforms" | "description" | "video_url">
 
 export interface questionsState{
     id:number;

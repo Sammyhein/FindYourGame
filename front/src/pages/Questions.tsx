@@ -60,8 +60,8 @@ function Questions(){
         {/* on commence par l'affichage des question et lui dire de continuer de s'afficher tant qu'il reste des question */}
         {currentQuestion !== questionsTyped.length && (
             <>
-             <h2>{questionsTyped[currentQuestion].question}</h2>
-            <h1>{questionsTyped[currentQuestion].description}</h1>
+             <h2 className="text-purple-500 font-bold uppercase text-2xl">{questionsTyped[currentQuestion].question}</h2>
+            <h1 className="text-7xl mb-5">{questionsTyped[currentQuestion].description}</h1>
             {/* On importe la mise en page des réponse */}
             < ReponsesLayout questionsTyped={questionsTyped} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} dataPlatforms={dataPlatforms} dataCategory={dataCategory} reponsesList={reponsesList}/>
             </>
@@ -90,7 +90,7 @@ function Questions(){
             }}>Recommencer</button>
         </>)
         }
-        {currentQuestion !== 0 && (<button onClick={()=>{setCurrentQuestion(currentQuestion-1);
+        {currentQuestion !== 0 && (<button className="bg-purple-800 font-bold rounded-4xl mt-5" onClick={()=>{setCurrentQuestion(currentQuestion-1);
         }}>Retour</button>)}
         </>
     )

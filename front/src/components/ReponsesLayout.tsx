@@ -18,7 +18,7 @@ export default function ReponsesLayout({questionsTyped, currentQuestion, setCurr
                 }}>
             <input required type="number" placeholder="Votre âge en nombre" onChange={(e)=>{setInputAge(Number(e.target.value))}}/><p>ans</p>
             </form>
-             <button onClick={()=>{
+             <button className="bg-purple-800 font-bold rounded-4xl mt-5" onClick={()=>{
                 if(inputAge !== 0){
                     reponsesList.parental_guidance=inputAge
                     setCurrentQuestion(currentQuestion+1);
@@ -34,7 +34,7 @@ export default function ReponsesLayout({questionsTyped, currentQuestion, setCurr
                 <>
                 {questionsTyped[currentQuestion].reponses.map((reponse : string, index : number)=>{
                     return(
-                    <button key={index} onClick={()=> {
+                    <button className="border-2 border-purple-600 font-bold rounded-4xl mt-5 ml-5" key={index} onClick={()=> {
                         if(reponse === "oui")reponsesList.free_to_play="true"
                         else if(reponse ==="non") reponsesList.free_to_play="false"
                         else if(reponse==="Pas d'importances")reponsesList.free_to_play="null"
@@ -47,10 +47,10 @@ export default function ReponsesLayout({questionsTyped, currentQuestion, setCurr
         } else if (questionsTyped[currentQuestion].callData === "platforms"){
             return(
                 <>
-                {dataPlatforms?.map((platform, index : number)=>{return (<button key={index} onClick={()=>{
+                {dataPlatforms?.map((platform, index : number)=>{return (<button className="border-2 border-purple-600 font-bold rounded-4xl mt-5 ml-5" key={index} onClick={()=>{
                     setCurrentQuestion(currentQuestion +1);
                     reponsesList.platforms=platform.name}}>{platform.name}</button>)})}
-                <button onClick={()=>{
+                <button className="border-2 border-purple-600 text-yellow-300 font-bold rounded-4xl mt-5 ml-5" onClick={()=>{
                     setCurrentQuestion(currentQuestion +1);
                     reponsesList.platforms="null"}}>{questionsTyped[currentQuestion].reponses}</button>
                 </>
@@ -58,18 +58,18 @@ export default function ReponsesLayout({questionsTyped, currentQuestion, setCurr
         } else if (questionsTyped[currentQuestion].callData === "category"){
             return(
                 <>
-                {dataCategory?.map((category, index)=>{return(<button key={index} onClick={() => {
+                {dataCategory?.map((category, index)=>{return(<button className="border-2 border-purple-600 font-bold rounded-4xl mt-5 ml-5" key={index} onClick={() => {
                     reponsesList.category=category.name
                     setCurrentQuestion(currentQuestion+1);
                     }}>{category.name}</button>)})}
-                <button onClick={()=>{
+                <button className="border-2 border-purple-600 text-yellow-300 font-bold rounded-4xl mt-5 ml-5" onClick={()=>{
                     setCurrentQuestion(currentQuestion +1);
                     reponsesList.category="null"}}>{questionsTyped[currentQuestion].reponses}</button>
                 </>)
         } else if (questionsTyped[currentQuestion].callData === "online"){
             return(
                 <>
-                {questionsTyped[currentQuestion].reponses.map((reponse : string, index : number)=>{return(<button key={index} onClick={()=>{
+                {questionsTyped[currentQuestion].reponses.map((reponse : string, index : number)=>{return(<button className="border-2 border-purple-600 font-bold rounded-4xl mt-5 ml-5" key={index} onClick={()=>{
                     if(reponse === "oui")reponsesList.online="true"
                     else if(reponse ==="non") reponsesList.online="false"
                     else if(reponse==="Pas d'importances")reponsesList.online="null"
@@ -78,7 +78,7 @@ export default function ReponsesLayout({questionsTyped, currentQuestion, setCurr
         } else if(questionsTyped[currentQuestion].callData === "multiplayer"){
             return(
                 <>
-                {questionsTyped[currentQuestion].reponses.map((reponse :string, index : number)=>{return(<button key={index} onClick={()=>{
+                {questionsTyped[currentQuestion].reponses.map((reponse :string, index : number)=>{return(<button className="border-2 border-purple-600 font-bold rounded-4xl mt-5 ml-5" key={index} onClick={()=>{
                     if(reponse === "oui")reponsesList.multiplayer="true"
                     else if(reponse ==="non") reponsesList.multiplayer="false"
                     else if(reponse==="Pas d'importances")reponsesList.multiplayer="null"
