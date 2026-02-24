@@ -1,6 +1,7 @@
 import { useLocation , useNavigate} from "react-router-dom"
 import type { dataStateResults } from "../interfaces/interface"
 import { useState, useEffect } from "react"
+import Header from "../components/Header"
 
 function DescriptionGame(){
     const [data, setData] = useState<dataStateResults[] | null>(null)
@@ -30,6 +31,7 @@ function DescriptionGame(){
     console.log(data)
     
     return(<>
+        <Header />
         {data?.map((game, index)=>{
             return(
             <article key={index}>

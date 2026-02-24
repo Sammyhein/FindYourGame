@@ -2,6 +2,7 @@ import { useLocation } from "react-router-dom"
 import type { dataStateResults } from "../interfaces/interface"
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
+import Header from "../components/Header"
 
 function Results(){
     const [data, setData] = useState<dataStateResults[] | null>(null)
@@ -44,6 +45,7 @@ function Results(){
 
 return(
     <>
+    <Header />
     {gamesFilter?.length !== 0 && (<><h1 className="mb-5 text-5xl uppercase">Voici le/les jeu(x) que nous vous conseillons selon vos critères !</h1>
     <article className="flex flex-wrap gap-4 place-content-center-safe">
     {gamesFilter?.map((game)=>{

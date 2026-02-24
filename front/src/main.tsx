@@ -7,13 +7,15 @@ import Results from './pages/Results.tsx'
 import { createBrowserRouter , RouterProvider } from 'react-router-dom'
 import NotFoundPage from './pages/NotFoundPage.tsx'
 import DescriptionGame from './pages/DescriptionGame.tsx'
+import Password from './pages/Password.tsx'
 
 const router = createBrowserRouter([
   {path:"/", element:<App />},
   {path:"/questions", element:<Questions />},
   {path:"/results", element:<Results />},
   {path:"*", element:<NotFoundPage />},
-  {path:"/descriptionGame", element:<DescriptionGame />}
+  {path:"/descriptionGame", element:<DescriptionGame />},
+  {path:"/password", element:<Password />}
 ])
 
 createRoot(document.getElementById('root')!).render(
