@@ -17,10 +17,11 @@ export default function Admin(){
         setHiddenAdd(true)
         setHiddenModDel(false)
         }}>Modifier ou Supprimer un jeu</button>
-    <form action="submit" hidden={hiddenAdd}>
+    <br/>
+    <form className="mt-10" action="submit" hidden={hiddenAdd}>
         <AddGame />
     </form>
-    <article hidden={hiddenModDel}>
+    <article className="mt-10" hidden={hiddenModDel}>
         <ModDelGame />
     </article>
     </>
