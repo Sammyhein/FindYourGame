@@ -8,7 +8,7 @@ export default function Header (){
                 <h1 className="font-black">FindYourGame</h1>
             </section>
             <section>
-                <Link to="/">
+                <Link to="/password">
                 <button>Admin Account</button>
                 </Link>
                 <span>|</span>
