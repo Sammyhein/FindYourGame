@@ -30,12 +30,12 @@ function DescriptionGame(){
     console.log(data)
     
     return(<>
-        {data?.map((game)=>{
+        {data?.map((game, index)=>{
             return(
-            <article>
+            <article key={index}>
                 <h1 className="mb-5 text-6xl  uppercase">{game.name}</h1>
-                <iframe src={game.video_url} title={`Vidéo de ${game.name}`}  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" className="mb-5 lg:w-300 lg:h-150 h-75 w-150 place-self-center-safe" allowFullScreen></iframe>
-                <article className="md:flex md:justify-evenly rounded-2xl gap-10 items-start">
+                <iframe src={game.video_url} title={`Vidéo de ${game.name}`}  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" className="mb-5 lg:w-250 lg:h-125 md:h-75 md:w-150 place-self-center-safe" allowFullScreen></iframe>
+                <article className="md:flex md:justify-evenly gap-10 items-start lg:w-250 mb-2">
                     <section>
                         <img src={game.image_url} alt={game.name} className="w-2xl top-10"/>
                     </section>
@@ -53,10 +53,7 @@ function DescriptionGame(){
                             {game.platforms.map((platform, index) => <p className=" bg-blue-900 rounded-2xl p-2 font-black border-2 border-blue-300 text-[10px]" key={index}>{platform}</p>)}
                         </section>
                         <p className="text-left text-[12px]">{game.description}</p>
-
-                        
                         <button className="rounded-full bg-purple-600 font-black uppercase text-purple-200 mb-5" onClick={()=>{navigate(-1)}}>Retour</button>
-                        
                     </section>
                 </article>
             </article>)

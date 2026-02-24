@@ -71,13 +71,14 @@ function Questions(){
 
         {/* Quand on est à la dernière question */}
         {currentQuestion === questionsTyped.length && (<>
-            <h2>Merci pour vos réponses !</h2>
-            <h1>Êtes-vous prêt(e)s à voir les jeux qui vous correspondent ? </h1>
+            <h2 className="text-purple-500 font-bold uppercase text-2xl">Merci pour vos réponses !</h2>
+            <h1 className="text-7xl mb-5">Êtes-vous prêt(e)s à voir les jeux qui vous correspondent ? </h1>
             {/* le state c'est ce qui va me permettre d'exporter mes réponses à la page résultat en utilisant useLocation */}
             <Link to={"/results"} state={reponsesList}>
-            <button>Résultats</button>
+            <button className="rounded-full bg-linear-65 from-purple-800 to-purple-500 font-black uppercase text-white mb-5 mt-5 text-4xl border-2">Résultats</button>
             </Link>
-            <button onClick={()=>{
+            <br />
+            <button className="border-2 border-purple-600 font-bold rounded-4xl mt-5 mr-5" onClick={()=>{
                 setCurrentQuestion(0);
                 setReponsesList({
                     parental_guidance:0,
