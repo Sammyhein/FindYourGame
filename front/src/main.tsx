@@ -9,6 +9,7 @@ import NotFoundPage from './pages/NotFoundPage.tsx'
 import DescriptionGame from './pages/DescriptionGame.tsx'
 import Password from './pages/Password.tsx'
 import Admin from './pages/Admin.tsx'
+import ModifyGame from './pages/ModifyGame.tsx'
 
 const router = createBrowserRouter([
   {path:"/", element:<App />},
@@ -17,7 +18,8 @@ const router = createBrowserRouter([
   {path:"*", element:<NotFoundPage />},
   {path:"/descriptionGame", element:<DescriptionGame />},
   {path:"/password", element:<Password />},
-  {path:"/admin", element:<Admin />}
+  {path:"/admin", element:<Admin />},
+  {path:"/modifyGame", element:<ModifyGame/>}
 ])
 
 createRoot(document.getElementById('root')!).render(

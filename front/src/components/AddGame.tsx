@@ -34,18 +34,6 @@ export default function AddGame(){
         setNewCategories([...newCategories,"--Selectionnez le genre--"])
     }
 
-    //     "platforms": [
-//       "Nintendo Switch",
-//       "Nintendo Switch 2"
-//     ],
-//     "category": [
-//       "Action",
-//       "Aventure",
-//       "RPG"
-//     ],
-//     "video_url": "https://www.youtube.com/embed/yhV4b4DkewQ?si=Edy_iyHLK-IKc-4r"
-//   }
-
     useEffect(()=>{
         async function getPlaforms() {
             try{
@@ -119,9 +107,9 @@ export default function AddGame(){
     </select>
 
     <p>Sur quelle(s) plateforme(s) pouvons-nous jouer à ce jeu ? </p>
-    {newPlatforms.map((newPlat) =>{
+    {newPlatforms.map((newPlat , index) =>{
         return(
-            <select name="platforms" onChange={(e)=>setSelectPlatfoms(e.target.value)} className="border-2 rounded-2xl p-3 mb-2">
+            <select key={index} name="platforms" onChange={(e)=>setSelectPlatfoms(e.target.value)} className="border-2 rounded-2xl p-3 mb-2">
                 <option value="newPlat">{newPlat}</option>
                 {dataPlatforms?.map((platform)=>{return(<option key={platform.id_platforms} value={platform.name}>{platform.name}</option>)})}
                 <option value="Autre">--Autre--</option>
@@ -131,9 +119,9 @@ export default function AddGame(){
     <button className="ml-3 border-purple-300 border-4 font-bold rounded-2xl" onClick={()=> addNewPlatform()}>Ajouter une plateforme</button>
 
     <p>Ce jeu est de quel(s) genre(s) ?</p>
-    {newCategories.map((newCat) => {
+    {newCategories.map((newCat, index) => {
             return(    
-            <select name="category" onChange={(e)=>setSelectCategory(e.target.value)} className="border-2 rounded-2xl p-3 mb-2">
+            <select key={index} name="category" onChange={(e)=>setSelectCategory(e.target.value)} className="border-2 rounded-2xl p-3 mb-2">
                 <option value="newCat">{newCat}</option>
                 {dataCategory?.map((category)=>{return(<option key={category.id_category} value={category.name}>{category.name}</option>)})}
                 <option value="Autre">--Autre--</option>

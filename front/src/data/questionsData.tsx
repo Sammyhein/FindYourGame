@@ -20,7 +20,7 @@ const questionsData = [
     {
     "id":2,
     "question":"Question 3",
-    "description":"Sur quel plateforme veux-tu jouer ?",
+    "description":"Sur quelle plateforme veux-tu jouer ?",
     "reponses":["Pas d'importances"],
     "input":false,
     "needsData":true,
