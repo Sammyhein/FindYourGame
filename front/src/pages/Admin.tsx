@@ -33,9 +33,9 @@ export default function Admin(){
     <form className="mt-10 text-left" action="submit" hidden={hiddenAdd}>
         <AddGame />
     </form>
-    <article className="mt-10 flex flex-wrap gap-4 place-content-center-safe" hidden={hiddenModDel}>
+    <section hidden={hiddenModDel}>
         <ModDelGame />
-    </article>
+    </section>
     </>
     )
 }

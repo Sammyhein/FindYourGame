@@ -14,7 +14,7 @@ export default function AddGame(){
 
     const [newPlatforms, setNewPlatforms] = useState(["--Selectionnez une plateforme"])
 
-        //pour récupérer la valeur du select
+    //Pour récupérer la valeur du select
     const [selectPlatforms, setSelectPlatfoms] = useState("")
 
     function addNewPlatform(){

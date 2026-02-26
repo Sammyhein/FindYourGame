@@ -6,6 +6,8 @@ export default function ModDelGame(){
     const [data, setData] = useState<dataStateResults[] | null>(null)
     const [loading, setLoading] = useState(true)
 
+    const[input, setInput] = useState("")
+
     useEffect(() => {
          async function getData() {
             try{
@@ -24,6 +26,11 @@ export default function ModDelGame(){
     console.log(data);
     return(
     <>
+    <form action="submit" onSubmit={(e)=>e.preventDefault} className="grid grid-cols-[10rem_auto] place-items-center-safe">
+    <label className="mr-4 uppercase font-bold">Quel jeu ?</label>
+    <input type="text" className="border-2 rounded-2xl p-3 mb-2 mt-5 w-full" value={input} placeholder="Rechercher" onChange={(e)=>setInput(e.target.value)} /> <br />
+    </form>
+    <article className="mt-10 flex flex-wrap gap-4 place-content-center-safe">
     {data?.map((game)=>{
         const gameId = game.id
         return(
@@ -53,5 +60,6 @@ export default function ModDelGame(){
         </article>
         )
     })}
+    </article>
     </>)
 }
