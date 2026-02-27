@@ -8,6 +8,12 @@ function Results(){
     const [data, setData] = useState<dataStateResults[] | null>(null)
     const [loading, setLoading] = useState(true)
 
+    // ── États pour l'IA ──────────────────────────────────────────────
+    const [aiResponse, setAiResponse] = useState<string | null>(null)
+    const [aiLoading, setAiLoading] = useState(false)
+    const [aiError, setAiError] = useState<string | null>(null)
+    // ────────────────────────────────────────────────────────────────
+
     //Je récupère mes réponses des questions grâce à useLocation
     const location = useLocation()
     const reponsesList = location.state
@@ -26,10 +32,6 @@ function Results(){
         } getData()
     },[])
 
-    if(loading)return <h1>Loading...</h1>
-
-    console.log(data);
-
     const gamesFilter = data?.filter(game =>{
         return(
         reponsesList.parental_guidance >= game.parental_guidance && 
@@ -41,11 +43,47 @@ function Results(){
         )
     })
 
-    console.log(gamesFilter)
+    // ── Déclenchement automatique de l'IA si aucun match ────────────
+    // On surveille gamesFilter : dès qu'il est vide, on appelle l'IA
+    useEffect(() => {
+        if (gamesFilter?.length === 0) {
+            async function getAIRecommendation() {
+                setAiLoading(true)
+                setAiError(null)
+
+                try {
+                    const response = await fetch("http://localhost:4242/ai-recommendation", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ reponsesList })
+                    })
+
+                    const data = await response.json()
+
+                    if (!response.ok) throw new Error(data.error)
+
+                    setAiResponse(data.recommendation)
+
+                } catch (error) {
+                    console.error("Erreur IA :", error)
+                    setAiError("Le service IA est temporairement indisponible.")
+                } finally {
+                    setAiLoading(false)
+                }
+            }
+            getAIRecommendation()
+        }
+    }, [gamesFilter?.length])  // se relance uniquement si le nombre de résultats change
+    // ────────────────────────────────────────────────────────────────
+     if(loading)return <h1>Loading...</h1>
+
+    console.log(data);
+     console.log(gamesFilter)
 
 return(
     <>
     <Header />
+    {/* POUR LES JEUX QUI CORRESPONDENT AUX CRITÈRES */}
     {gamesFilter?.length !== 0 && (<><h1 className="mb-5 text-5xl uppercase">Voici le/les jeu(x) que nous vous conseillons selon vos critères !</h1>
     <article className="flex flex-wrap gap-4 place-content-center-safe">
     {gamesFilter?.map((game)=>{
@@ -76,12 +114,42 @@ return(
     })}
     </article></>)}
 
+    {/* POUR LES JEUX QUI CORRESPONDENT PAS AUX CRITÈRES */}
     {gamesFilter?.length === 0 && (<><h1 className="mb-5 text-5xl uppercase font-bold">OUPS!!!</h1>
     <h2 className="text-xl uppercase">Vos critères ne correspondent à aucun de nos jeux dans notre bibliothèque ! <br /> Recommencez la quizz en changeant certain de vos critères <br /></h2>
     <Link to={"/questions"}>
      <button className="border-2 border-purple-600 font-bold rounded-4xl mt-5 text-white">Recommencer</button>
      </Link>
-    <br /><h3 className="font-black text-purple-400 text-3xl mt-9"> OU <br /></h3>
+
+    {/* ── Bloc IA (automatique) ────────────────────────────── */}
+                <div className="mt-10 mb-5 max-w-2xl mx-auto bg-gray-900 border border-purple-700 rounded-3xl p-3">
+                    <h3 className="text-purple-400 font-black text-2xl uppercase mb-1">
+                        ✦ Recommandation par IA
+                    </h3>
+                    <p className="text-gray-400 text-sm mb-4">
+                        Notre IA te suggère des jeux en dehors de notre bibliothèque
+                    </p>
+
+                    {/* Chargement */}
+                    {aiLoading && (
+                        <p className="text-purple-300 animate-pulse font-semibold">
+                            L'IA analyse ton profil...
+                        </p>
+                    )}
+
+                    {/* Erreur */}
+                    {aiError && (
+                        <p className="text-red-400">{aiError}</p>
+                    )}
+
+                    {/* Réponse de l'IA */}
+                    {aiResponse && (
+                         <div className="flex flex-wrap gap-4 text-center justify-center" dangerouslySetInnerHTML={{ __html: aiResponse }}/>
+                    )}
+                </div>
+    {/* ── Fin bloc IA ─────────────────────────────────────── */}
+
+    <br /><h3 className="font-black text-purple-400 text-3xl"> OU <br /></h3>
     <h2 className="mb-5 text-xl uppercase mt-9">Veuillez regarder notre liste de jeux ci-dessous</h2>
     <article className="flex flex-wrap gap-4 place-content-center-safe">
     {data?.map((game)=>{

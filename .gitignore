@@ -1,6 +1,0 @@
-#dossier les plus lourd
-node_modules
-
-#sécurité
-.env
-.env.*
