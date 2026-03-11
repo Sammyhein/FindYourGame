@@ -2,6 +2,7 @@ import { useLocation , useNavigate} from "react-router-dom"
 import type { dataStateResults } from "../interfaces/interface"
 import { useState, useEffect } from "react"
 import Header from "../components/Header"
+import { API_BASE_URL } from "../api"
 
 function DescriptionGame(){
     const [data, setData] = useState<dataStateResults[] | null>(null)
@@ -16,7 +17,7 @@ function DescriptionGame(){
     useEffect(() => {
              async function getData() {
                 try{
-                    const res = await fetch(`http://localhost:4242/description/${gameId}`);
+                    const res = await fetch(`${API_BASE_URL}/description/${gameId}`);
                     setData(await res.json())
                 }catch(error){
                     console.error("L'API n'a pas pu s'afficher")

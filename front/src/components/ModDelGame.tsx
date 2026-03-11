@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import type { dataStateResults } from "../interfaces/interface"
 import { Link } from "react-router-dom"
+import { API_BASE_URL } from "../api"
 
 export default function ModDelGame(){
     const [data, setData] = useState<dataStateResults[] | null>(null)
@@ -11,7 +12,7 @@ export default function ModDelGame(){
     useEffect(() => {
          async function getData() {
             try{
-                const res = await fetch("http://localhost:4242/games");
+                const res = await fetch(`${API_BASE_URL}/games`);
                 setData(await res.json())
             }catch(error){
                 console.error("L'API n'a pas pu s'afficher")

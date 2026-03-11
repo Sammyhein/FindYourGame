@@ -1,6 +1,7 @@
 import { useState,useEffect } from "react"
 import type { categoryState } from "../interfaces/interface.ts"
 import type { platformsState } from "../interfaces/interface.ts"
+import { API_BASE_URL } from "../api.ts"
 
 
 export default function AddGame(){
@@ -37,7 +38,7 @@ export default function AddGame(){
     useEffect(()=>{
         async function getPlaforms() {
             try{
-                const res = await fetch("http://localhost:4242/platforms");
+                const res = await fetch(`${API_BASE_URL}/platforms`);
                 setDataPlatforms(await res.json())
             }catch(error){
                 console.error("L'API des catégories n'a pas pu s'afficher")
@@ -48,7 +49,7 @@ export default function AddGame(){
 
         async function getCategory() {
             try{
-                const res = await fetch("http://localhost:4242/category");
+                const res = await fetch(`${API_BASE_URL}/category`);
                 setDataCategory(await res.json())
             }catch(error){
                 console.error("L'API des catégories n'a pas pu s'afficher")

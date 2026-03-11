@@ -3,6 +3,7 @@ import type { dataStateResults } from "../interfaces/interface"
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import Header from "../components/Header"
+import { API_BASE_URL } from "../api"
 
 function Results(){
     const [data, setData] = useState<dataStateResults[] | null>(null)
@@ -22,7 +23,7 @@ function Results(){
     useEffect(() => {
          async function getData() {
             try{
-                const res = await fetch("http://localhost:4242/games");
+                const res = await fetch(`${API_BASE_URL}/games`);
                 setData(await res.json())
             }catch(error){
                 console.error("L'API n'a pas pu s'afficher")
@@ -52,7 +53,7 @@ function Results(){
                 setAiError(null)
 
                 try {
-                    const response = await fetch("http://localhost:4242/ai-recommendation", {
+                    const response = await fetch(`${API_BASE_URL}/ai-recommendation`, {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({ reponsesList })
