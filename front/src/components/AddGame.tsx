@@ -16,7 +16,7 @@ export default function AddGame(){
     const [newPlatforms, setNewPlatforms] = useState(["--Selectionnez une plateforme"])
 
     //Pour récupérer la valeur du select
-    const [selectPlatforms, setSelectPlatfoms] = useState("")
+    const [_selectPlatforms, setSelectPlatfoms] = useState("")
 
     function addNewPlatform(){
         setNewPlatforms([...newPlatforms,"--Selectionnez une plateforme"])
@@ -29,7 +29,7 @@ export default function AddGame(){
     const [newCategories, setNewCategories] = useState(["--Selectionnez le genre--"])
 
         //pour récupérer la valeur du select
-    const [selectCategory, setSelectCategory] = useState("")
+    const [_selectCategory, setSelectCategory] = useState("")
 
     function addNewCategorie(){
         setNewCategories([...newCategories,"--Selectionnez le genre--"])
