@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+// import { Link } from "react-router-dom"
 
 export default function Header (){
     return(
@@ -8,13 +8,13 @@ export default function Header (){
                 <h1 className="font-black">FindYourGame</h1>
             </section>
             <section>
-                <Link to="/password">
+                {/* <Link to="/password">
                 <button>Admin Account</button>
                 </Link>
                 <span>|</span>
                 <Link to="/NotFoundPage">
                 <button>Log Out</button>
-                </Link>
+                </Link> */}
             </section>
         </article>
     </header>
