@@ -16,7 +16,7 @@ export default function ReponsesLayout({questionsTyped, currentQuestion, setCurr
                     alert("Vous devez inscrire votre âge")
                 }
                 }}>
-            <input required type="number" placeholder="Votre âge en nombre" onChange={(e)=>{setInputAge(Number(e.target.value))}}/><p>ans</p>
+            <input required type="number" placeholder="Votre âge" onChange={(e)=>{setInputAge(Number(e.target.value))}}/><p>ans</p>
             </form>
              <button className="bg-purple-800 font-bold rounded-4xl mt-5" onClick={()=>{
                 if(inputAge !== 0){
